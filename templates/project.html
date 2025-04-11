@@ -155,314 +155,387 @@
         }
       }
 
-      /* Intro Section Styles */
-      .intro-section {
-        height: 100vh;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        padding: 2rem;
-        position: relative;
-        background: linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgba(10, 10, 15, 0.9) 100%);
-        overflow: hidden;
+      /* Animations */
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
       }
 
-      .intro-container {
+      @keyframes slideUp {
+        from {
+          transform: translateY(30px);
+          opacity: 0;
+        }
+        to {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes fadeInLeft {
+        from {
+          opacity: 0;
+          transform: translateX(-20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      @keyframes pulse {
+        0% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.5;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+      
+      @keyframes blink {
+        0%, 100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0;
+        }
+      }
+      
+      /* Typewriter cursor styling */
+      .cursor {
+        display: inline-block;
+        width: 3px;
+        height: 1.8rem;
+        margin-left: 4px;
+        background-color: #888;
+        animation: blink 1s infinite;
+        position: relative;
+        top: 3px;
+      }
+
+      /* Projects Intro Section */
+      .projects-intro {
+        min-height: 100vh;
+        padding: 8rem 4rem 4rem;
+        position: relative;
+        background: linear-gradient(
+          180deg,
+          rgba(0, 0, 0, 1) 0%,
+          rgba(10, 10, 15, 1) 100%
+        );
         display: flex;
-        align-items: center;
-        justify-content: space-between;
-        width: 100%;
-        max-width: 1400px;
+        flex-direction: column;
+        justify-content: center;
       }
 
       .intro-content {
-        width: 40%;
-        padding-right: 2rem;
-        z-index: 2;
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        text-align: center;
+        margin-bottom: 3rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-height: 120px;
       }
 
-      .intro-statement {
-        font-size: 3rem;
+      .intro-heading {
+        font-size: 3.5rem;
         font-weight: 700;
-        line-height: 1.3;
-        color: #fff;
+        margin-bottom: 1.5rem;
+        line-height: 1.2;
+        animation: fadeInUp 0.8s ease forwards;
+      }
+
+      .intro-heading span {
+        color: #888;
+      }
+
+      .intro-text {
+        font-size: 1.8rem;
+        font-weight: 400;
+        line-height: 1.6;
+        max-width: 800px;
+        margin: 0 auto 3rem;
         opacity: 0;
-        animation: fadeInUp 1s ease forwards 0.2s;
+        animation: fadeInUp 0.8s ease forwards 0.3s;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        min-height: 2.5rem;
       }
 
-      .spline-container {
-        width: 60%;
-        height: 500px;
-        z-index: 1;
+      .intro-3d-container {
+        width: 100%;
+        height: 60vh;
+        min-height: 500px;
+        position: relative;
+        margin: 0 auto;
+        opacity: 0;
+        animation: fadeIn 1.2s ease forwards 0.6s;
       }
 
-      .spline-iframe {
+      .intro-3d-iframe {
         width: 100%;
         height: 100%;
         border: none;
-      }
-
-      .scroll-indicator {
-        position: absolute;
-        bottom: 3rem;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        z-index: 10;
-        opacity: 0;
-        animation: fadeInUp 1s ease forwards 1s;
-        cursor: pointer;
-      }
-
-      .scroll-text {
-        font-size: 0.9rem;
-        color: rgba(255, 255, 255, 0.7);
-        margin-bottom: 1rem;
-        letter-spacing: 1px;
-      }
-
-      .scroll-arrow {
-        animation: bounceDown 2s ease infinite;
-      }
-
-      @keyframes bounceDown {
-        0%, 20%, 50%, 80%, 100% {
-          transform: translateY(0);
-        }
-        40% {
-          transform: translateY(10px);
-        }
-        60% {
-          transform: translateY(5px);
-        }
-      }
-
-      @media (max-width: 992px) {
-        .intro-statement {
-          font-size: 2.5rem;
-        }
-      }
-
-      @media (max-width: 768px) {
-        .intro-container {
-          flex-direction: column;
-        }
-        
-        .intro-content {
-          width: 100%;
-          padding-right: 0;
-          margin-bottom: 2rem;
-          text-align: center;
-        }
-        
-        .spline-container {
-          width: 100%;
-          height: 400px;
-        }
-        
-        .intro-statement {
-          font-size: 2rem;
-        }
-      }
-
-      @media (max-width: 480px) {
-        .intro-statement {
-          font-size: 1.8rem;
-        }
-        
-        .spline-container {
-          height: 300px;
-        }
-      }
-
-      /* Page Header Section */
-      .page-header {
-        height: 50vh;
-        min-height: 400px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        position: relative;
+        border-radius: 12px;
         overflow: hidden;
-        background: linear-gradient(0deg, rgba(0, 0, 0, .7) 0%, rgba(10, 10, 15, .7) 100%);
+        background: transparent;
       }
 
-      .page-header::before {
+      /* Featured Project Section */
+      .featured-project {
+        padding: 8rem 4rem;
+        position: relative;
+        background: linear-gradient(
+          0deg,
+          rgba(0, 0, 0, 1) 0%,
+          rgba(10, 10, 15, 1) 100%
+        );
+      }
+
+      .section-header {
+        text-align: center;
+        margin-bottom: 4rem;
+      }
+
+      .section-subtitle {
+        display: inline-block;
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        color: rgba(255, 255, 255, 0.6);
+        margin-bottom: 1rem;
+        position: relative;
+        padding: 0 10px;
+      }
+
+      .section-subtitle::before,
+      .section-subtitle::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        width: 25px;
+        height: 1px;
+        background-color: rgba(255, 255, 255, 0.3);
+      }
+
+      .section-subtitle::before {
+        left: -30px;
+      }
+
+      .section-subtitle::after {
+        right: -30px;
+      }
+
+      .section-title {
+        font-size: 2.8rem;
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+        position: relative;
+        padding-bottom: 1rem;
+      }
+
+      .section-title::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60px;
+        height: 3px;
+        background-color: #888;
+      }
+
+      .section-title span {
+        color: #888;
+      }
+
+      .featured-container {
+        display: flex;
+        max-width: 1400px;
+        margin: 0 auto;
+        gap: 4rem;
+        align-items: center;
+      }
+
+      .featured-left {
+        width: 50%;
+      }
+
+      .featured-right {
+        width: 50%;
+      }
+
+      .featured-image {
+        width: 100%;
+        height: 500px;
+        border-radius: 12px;
+        overflow: hidden;
+        position: relative;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+      }
+
+      .featured-image::after {
         content: "";
         position: absolute;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
-        background-image: url('/api/placeholder/1920/1080'); /* Replace with your image */
-        background-size: cover;
-        background-position: center;
-        filter: blur(2px) brightness(0.3);
-        z-index: -1;
+        background: linear-gradient(
+          135deg,
+          rgba(0, 0, 0, 0.2) 0%,
+          rgba(0, 0, 0, 0.6) 100%
+        );
+        transition: all 0.3s ease;
       }
 
-      .page-header-content {
-        text-align: center;
-        max-width: 800px;
-        padding: 0 2rem;
-        z-index: 1;
+      .featured-image:hover {
+        transform: translateY(-10px);
       }
 
-      .page-title {
-        font-size: 3.5rem;
+      .featured-image:hover::after {
+        opacity: 0.7;
+      }
+
+      .featured-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
+      }
+
+      .featured-image:hover img {
+        transform: scale(1.05);
+      }
+
+      .featured-content {
+        padding: 2rem;
+      }
+
+      .featured-title {
+        font-size: 2.5rem;
         font-weight: 700;
         margin-bottom: 1.5rem;
-        opacity: 0;
-        animation: fadeInUp 1s ease forwards;
+        position: relative;
+        padding-bottom: 1rem;
       }
 
-      .page-subtitle {
-        font-size: 1.2rem;
+      .featured-title::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 60px;
+        height: 3px;
+        background-color: #888;
+      }
+
+      .featured-description {
+        font-size: 1.1rem;
         font-weight: 300;
-        max-width: 600px;
-        margin: 0 auto;
-        line-height: 1.6;
+        line-height: 1.8;
+        margin-bottom: 2rem;
         color: rgba(255, 255, 255, 0.8);
-        opacity: 0;
-        animation: fadeInUp 1s ease forwards 0.3s;
       }
 
-      /* Project Filter Section */
-      .filter-section {
-        padding: 2rem 4rem;
+      .featured-tags {
         display: flex;
-        justify-content: space-between;
-        align-items: center;
         flex-wrap: wrap;
         gap: 1rem;
-        position: sticky;
-        top: 80px;
-        background-color: rgba(0, 0, 0, 0.9);
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
-        z-index: 10;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        margin-bottom: 2.5rem;
       }
 
-      .filter-tabs {
-        display: flex;
-        gap: 1rem;
-        flex-wrap: wrap;
-      }
-
-      .filter-tab {
+      .featured-tag {
+        font-size: 0.9rem;
+        background: rgba(255, 255, 255, 0.05);
         padding: 0.6rem 1.2rem;
         border-radius: 30px;
-        background: transparent;
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        color: rgba(255, 255, 255, 0.7);
-        font-size: 0.9rem;
-        cursor: pointer;
+        color: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
+        border: 1px solid rgba(255, 255, 255, 0.05);
         transition: all 0.3s ease;
       }
 
-      .filter-tab:hover {
-        background: rgba(255, 255, 255, 0.05);
-        color: #fff;
-        border-color: rgba(255, 255, 255, 0.2);
-      }
-
-      .filter-tab.active {
+      .featured-tag:hover {
         background: rgba(255, 255, 255, 0.1);
-        color: #fff;
-        border-color: rgba(255, 255, 255, 0.3);
+        transform: translateY(-3px);
       }
 
-      .search-box {
-        position: relative;
+      .featured-buttons {
+        display: flex;
+        gap: 1.5rem;
       }
 
-      .search-input {
-        padding: 0.6rem 1rem 0.6rem 2.8rem;
+      .featured-button {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 1rem 2rem;
         background: rgba(255, 255, 255, 0.05);
+        color: #fff;
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 1rem;
+        border-radius: 8px;
         border: 1px solid rgba(255, 255, 255, 0.1);
-        border-radius: 30px;
-        color: #fff;
-        font-size: 0.9rem;
-        width: 250px;
-        transition: all 0.3s ease;
+        transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
       }
 
-      .search-input:focus {
-        outline: none;
-        width: 300px;
+      .featured-button:hover {
         background: rgba(255, 255, 255, 0.1);
         border-color: rgba(255, 255, 255, 0.2);
+        transform: translateY(-5px);
       }
 
-      .search-icon {
-        position: absolute;
-        left: 1rem;
-        top: 50%;
-        transform: translateY(-50%);
-        pointer-events: none;
-        color: rgba(255, 255, 255, 0.6);
+      .featured-button svg {
+        transition: transform 0.3s ease;
       }
 
-      @media (max-width: 768px) {
-        .filter-section {
-          padding: 1.5rem 2rem;
-          flex-direction: column;
-          align-items: stretch;
-          gap: 1.5rem;
-        }
-
-        .filter-tabs {
-          justify-content: center;
-        }
-
-        .search-box {
-          width: 100%;
-        }
-
-        .search-input, .search-input:focus {
-          width: 100%;
-        }
+      .featured-button:hover svg {
+        transform: translateX(4px);
       }
 
       /* Projects Grid Section */
-      .projects-section {
-        padding: 3rem 4rem 6rem;
-        background: linear-gradient(180deg, rgba(0, 0, 0, 1) 0%, rgba(10, 10, 15, 1) 100%);
+      .projects-grid-section {
+        padding: 8rem 4rem;
+        position: relative;
+        background: #000;
       }
 
       .projects-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+        grid-template-columns: repeat(3, 1fr);
         gap: 2.5rem;
-        margin-top: 1rem;
-        perspective: 1000px;
+        max-width: 1400px;
+        margin: 0 auto;
       }
 
-      @media (max-width: 1200px) {
-        .projects-grid {
-          grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-        }
-      }
-
-      @media (max-width: 768px) {
-        .projects-section {
-          padding: 2rem 2rem 4rem;
-        }
-      }
-
-      @media (max-width: 480px) {
-        .projects-section {
-          padding: 1.5rem 1.5rem 3rem;
-        }
-
-        .projects-grid {
-          grid-template-columns: 1fr;
-        }
-      }
-
-      /* Project Card Styles */
       .project-card {
         background: rgba(20, 20, 25, 0.4);
         backdrop-filter: blur(10px);
@@ -477,16 +550,7 @@
         flex-direction: column;
         transform-style: preserve-3d;
         position: relative;
-        opacity: 0;
-        animation: fadeInUp 0.8s ease forwards;
       }
-
-      .project-card:nth-child(1) { animation-delay: 0.1s; }
-      .project-card:nth-child(2) { animation-delay: 0.2s; }
-      .project-card:nth-child(3) { animation-delay: 0.3s; }
-      .project-card:nth-child(4) { animation-delay: 0.4s; }
-      .project-card:nth-child(5) { animation-delay: 0.5s; }
-      .project-card:nth-child(6) { animation-delay: 0.6s; }
 
       .project-card::before {
         content: "";
@@ -647,409 +711,167 @@
         width: 100%;
       }
 
-      /* Featured Project */
-      .featured-project {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 3rem;
-        margin-bottom: 5rem;
-        opacity: 0;
-        animation: fadeIn 1s ease forwards;
-      }
-
-      .featured-project-image {
-        height: 400px;
-        border-radius: 12px;
-        overflow: hidden;
-        position: relative;
-        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
-      }
-
-      .featured-project-image img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transition: transform 1s cubic-bezier(0.165, 0.84, 0.44, 1);
-      }
-
-      .featured-project:hover .featured-project-image img {
-        transform: scale(1.05);
-      }
-
-      .featured-project-content {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-      }
-
-      .featured-label {
-        display: inline-block;
-        padding: 0.5rem 1rem;
-        background: rgba(255, 255, 255, 0.05);
-        border-radius: 30px;
-        font-size: 0.8rem;
-        font-weight: 500;
-        color: rgba(255, 255, 255, 0.8);
-        margin-bottom: 1.5rem;
-        backdrop-filter: blur(4px);
-        -webkit-backdrop-filter: blur(4px);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        width: fit-content;
-      }
-
-      .featured-project-title {
-        font-size: 2.2rem;
-        font-weight: 700;
-        margin-bottom: 1.5rem;
-        position: relative;
-        padding-bottom: 1rem;
-      }
-
-      .featured-project-title::after {
-        content: "";
-        position: absolute;
-        left: 0;
-        bottom: 0;
-        width: 60px;
-        height: 3px;
-        background: linear-gradient(
-          90deg,
-          rgba(255, 255, 255, 0.8) 0%,
-          rgba(255, 255, 255, 0.1) 100%
-        );
-      }
-
-      .featured-project-description {
-        font-size: 1.05rem;
-        font-weight: 300;
-        color: rgba(255, 255, 255, 0.8);
-        line-height: 1.8;
-        margin-bottom: 2rem;
-      }
-
-      .featured-project-tags {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.8rem;
-        margin-bottom: 2rem;
-      }
-
-      .featured-project-tag {
-        font-size: 0.85rem;
-        background: rgba(255, 255, 255, 0.05);
-        padding: 0.5rem 1rem;
-        border-radius: 20px;
-        color: rgba(255, 255, 255, 0.8);
-        backdrop-filter: blur(4px);
-        -webkit-backdrop-filter: blur(4px);
-        border: 1px solid rgba(255, 255, 255, 0.05);
-        transition: all 0.3s ease;
-      }
-
-      .featured-project:hover .featured-project-tag {
-        background: rgba(255, 255, 255, 0.1);
-      }
-
-      .featured-project-link {
-        display: inline-flex;
-        align-items: center;
-        gap: 10px;
-        padding: 0.9rem 2rem;
-        background: rgba(255, 255, 255, 0.05);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        border-radius: 8px;
-        color: #fff;
-        font-size: 1rem;
-        font-weight: 500;
-        text-decoration: none;
-        transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-        width: fit-content;
-      }
-
-      .featured-project-link:hover {
-        background: rgba(255, 255, 255, 0.1);
-        border-color: rgba(255, 255, 255, 0.2);
-        transform: translateY(-5px);
-      }
-
-      .featured-project-link svg {
-        transition: transform 0.3s ease;
-      }
-
-      .featured-project-link:hover svg {
-        transform: translateX(4px);
+      /* Responsive Styles */
+      @media (max-width: 1200px) {
+        .projects-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
       }
 
       @media (max-width: 992px) {
-        .featured-project {
-          grid-template-columns: 1fr;
-          gap: 2rem;
+        .featured-container {
+          flex-direction: column;
+          gap: 3rem;
         }
 
-        .featured-project-image {
-          height: 350px;
+        .featured-left,
+        .featured-right {
+          width: 100%;
         }
-      }
 
-      /* Pagination */
-      .pagination {
-        display: flex;
-        justify-content: center;
-        gap: 0.5rem;
-        margin-top: 5rem;
-      }
+        .featured-image {
+          height: 400px;
+        }
 
-      .pagination-item {
-        width: 40px;
-        height: 40px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: rgba(255, 255, 255, 0.05);
-        backdrop-filter: blur(4px);
-        -webkit-backdrop-filter: blur(4px);
-        border: 1px solid rgba(255, 255, 255, 0.05);
-        border-radius: 8px;
-        color: rgba(255, 255, 255, 0.8);
-        font-size: 0.9rem;
-        transition: all 0.3s ease;
-        cursor: pointer;
-      }
+        .intro-heading {
+          font-size: 3rem;
+        }
 
-      .pagination-item:hover {
-        background: rgba(255, 255, 255, 0.1);
-        border-color: rgba(255, 255, 255, 0.2);
-        color: #fff;
-      }
-
-      .pagination-item.active {
-        background: rgba(255, 255, 255, 0.1);
-        border-color: rgba(255, 255, 255, 0.2);
-        color: #fff;
-      }
-
-      /* Modal Styles */
-      .modal-bg {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.8);
-        backdrop-filter: blur(5px);
-        -webkit-backdrop-filter: blur(5px);
-        z-index: 1000;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        opacity: 0;
-        pointer-events: none;
-        transition: opacity 0.3s ease;
-      }
-
-      .modal-bg.active {
-        opacity: 1;
-        pointer-events: auto;
-      }
-
-      .modal-content {
-        width: 90%;
-        max-width: 1000px;
-        max-height: 90vh;
-        background: rgba(20, 20, 25, 0.9);
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
-        border-radius: 12px;
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-        overflow: hidden;
-        transform: translateY(30px);
-        opacity: 0;
-        transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-      }
-
-      .modal-bg.active .modal-content {
-        transform: translateY(0);
-        opacity: 1;
-      }
-
-      .modal-header {
-        padding: 1.5rem 2rem;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
-
-      .modal-title {
-        font-size: 1.8rem;
-        font-weight: 600;
-        color: #fff;
-      }
-
-      .modal-close {
-        width: 36px;
-        height: 36px;
-        border-radius: 50%;
-        background: rgba(255, 255, 255, 0.05);
-        border: none;
-        color: #fff;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        transition: all 0.3s ease;
-      }
-
-      .modal-close:hover {
-        background: rgba(255, 255, 255, 0.1);
-        transform: rotate(90deg);
-      }
-
-      .modal-body {
-        padding: 2rem;
-        overflow-y: auto;
-        max-height: calc(90vh - 80px);
-      }
-
-      .modal-image {
-        width: 100%;
-        height: 400px;
-        border-radius: 8px;
-        overflow: hidden;
-        margin-bottom: 2rem;
-      }
-
-      .modal-image img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
-
-      .modal-info {
-        display: grid;
-        grid-template-columns: 1fr 300px;
-        gap: 2rem;
-      }
-
-      .modal-description {
-        font-size: 1rem;
-        font-weight: 300;
-        color: rgba(255, 255, 255, 0.8);
-        line-height: 1.8;
-      }
-
-      .modal-description p {
-        margin-bottom: 1.5rem;
-      }
-
-      .modal-details {
-        background: rgba(0, 0, 0, 0.2);
-        border-radius: 8px;
-        padding: 1.5rem;
-      }
-
-      .modal-details h4 {
-        font-size: 1.1rem;
-        font-weight: 500;
-        margin-bottom: 1rem;
-        padding-bottom: 0.5rem;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-      }
-
-      .detail-item {
-        display: flex;
-        justify-content: space-between;
-        margin-bottom: 1rem;
-      }
-
-      .detail-label {
-        font-size: 0.9rem;
-        color: rgba(255, 255, 255, 0.6);
-      }
-
-      .detail-value {
-        font-size: 0.9rem;
-        color: rgba(255, 255, 255, 0.9);
-        font-weight: 500;
-      }
-
-      .modal-tags {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.6rem;
-        margin-top: 1.5rem;
-      }
-
-      .modal-tag {
-        font-size: 0.75rem;
-        background: rgba(255, 255, 255, 0.05);
-        padding: 0.4rem 0.8rem;
-        border-radius: 20px;
-        color: rgba(255, 255, 255, 0.8);
-      }
-
-      .modal-button {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        padding: 0.8rem 1.5rem;
-        background: rgba(255, 255, 255, 0.05);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        border-radius: 8px;
-        color: #fff;
-        font-size: 0.9rem;
-        font-weight: 500;
-        text-decoration: none;
-        transition: all 0.3s ease;
-        margin-top: 1.5rem;
-      }
-
-      .modal-button:hover {
-        background: rgba(255, 255, 255, 0.1);
-        border-color: rgba(255, 255, 255, 0.2);
-        transform: translateY(-3px);
-      }
-
-      .modal-gallery {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1rem;
-        margin-top: 2rem;
-      }
-
-      .gallery-item {
-        border-radius: 8px;
-        overflow: hidden;
-        height: 200px;
-        cursor: pointer;
-      }
-
-      .gallery-item img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transition: transform 0.5s ease;
-      }
-
-      .gallery-item:hover img {
-        transform: scale(1.05);
+        .intro-text {
+          font-size: 1.3rem;
+        }
       }
 
       @media (max-width: 768px) {
-        .modal-info {
+        .projects-intro,
+        .featured-project,
+        .projects-grid-section {
+          padding: 6rem 2rem;
+        }
+
+        .projects-grid {
           grid-template-columns: 1fr;
         }
 
-        .modal-gallery {
-          grid-template-columns: 1fr;
+        .intro-heading {
+          font-size: 2.5rem;
         }
 
-        .modal-image {
-          height: 300px;
+        .intro-text {
+          font-size: 1.1rem;
+        }
+
+        .intro-3d-container {
+          height: 50vh;
+          min-height: 400px;
         }
       }
+
+      @media (max-width: 480px) {
+        .projects-intro,
+        .featured-project,
+        .projects-grid-section {
+          padding: 5rem 1.5rem;
+        }
+
+        .intro-heading {
+          font-size: 2rem;
+        }
+
+        .featured-title {
+          font-size: 2rem;
+        }
+
+        .featured-buttons {
+          flex-direction: column;
+          gap: 1rem;
+        }
+
+        .featured-button {
+          width: 100%;
+          justify-content: center;
+        }
+
+        .intro-3d-container {
+          height: 40vh;
+          min-height: 300px;
+        }
+      }
+
+      /* Back to Top Button */
+      .back-to-top {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        width: 50px;
+        height: 50px;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        text-decoration: none;
+        font-size: 1.5rem;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+        z-index: 99;
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
+      }
+
+      .back-to-top.visible {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .back-to-top:hover {
+        background: rgba(255, 255, 255, 0.1);
+        transform: translateY(-5px);
+        border-color: rgba(255, 255, 255, 0.2);
+      }
     </style>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Mobile menu toggle functionality
+        const menuToggle = document.querySelector(".menu-toggle");
+        const navLinks = document.querySelector(".nav-links");
+
+        menuToggle.addEventListener("click", function () {
+          menuToggle.classList.toggle("active");
+          navLinks.classList.toggle("active");
+        });
+
+        // Close mobile menu when a link is clicked
+        const navItems = document.querySelectorAll(".nav-links a");
+        navItems.forEach((item) => {
+          item.addEventListener("click", function () {
+            menuToggle.classList.remove("active");
+            navLinks.classList.remove("active");
+          });
+        });
+
+        // Navbar scroll effect
+        window.addEventListener("scroll", function () {
+          const navbar = document.querySelector(".navbar");
+          if (window.scrollY > 50) {
+            navbar.classList.add("scrolled");
+          } else {
+            navbar.classList.remove("scrolled");
+          }
+
+          // Back to top button visibility
+          const backToTop = document.querySelector(".back-to-top");
+          if (window.scrollY > 500) {
+            backToTop.classList.add("visible");
+          } else {
+            backToTop.classList.remove("visible");
+          }
+        });
+      });
+    </script>
   </head>
   <body>
     <!-- Navbar -->
@@ -1069,107 +891,141 @@
       </div>
     </nav>
 
-    <!-- Page Header -->
-    <section class="page-header">
-      <div class="page-header-content">
-        <h1 class="page-title">My Projects</h1>
-        <p class="page-subtitle">Explore my creative works and development projects that showcase my skills and passion for building innovative digital solutions.</p>
+    <!-- Projects Intro Section -->
+    <section class="projects-intro">
+      <div class="intro-content">
+        <!-- <h1 class="intro-heading">My <span>Projects</span></h1> -->
+        <p class="intro-text">
+          <span id="typewriter">My projects are more than just...</span>
+          <span class="cursor">|</span>
+        </p>
+      </div>
+      <div class="intro-3d-container">
+        <!-- Replace with your Spline 3D model URL -->
+        <iframe
+          class="intro-3d-iframe"
+          src="https://my.spline.design/chatgptkeyboard-NvnJRt2mrgdyUKipqkchsZ8C/"
+          frameborder="0"
+          allowfullscreen
+        ></iframe>
       </div>
     </section>
 
-    <!-- Intro Section with 3D Design -->
-    <section class="intro-section">
-      <div class="intro-container">
-        <div class="intro-content">
-          <h2 class="intro-statement">My projects are more than...</h2>
-        </div>
-        <div class="spline-container">
-          <iframe
-            class="spline-iframe"
-            src="https://my.spline.design/untitled-d21e1f8bc711a1a75a40e869b14467fb/" 
-            frameborder="0"
-            allowfullscreen
-          ></iframe>
-        </div>
+    <!-- Featured Project Section -->
+    <section class="featured-project">
+      <div class="section-header">
+        <span class="section-subtitle">Highlight</span>
+        <h2 class="section-title">Featured <span>Project</span></h2>
       </div>
-      <div class="scroll-indicator">
-        <div class="scroll-text">Scroll to explore my work</div>
-        <div class="scroll-arrow">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 5V19M12 19L5 12M12 19L19 12" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </div>
-      </div>
-    </section>
-
-    <!-- Filter Section -->
-    <section class="filter-section">
-      <div class="filter-tabs">
-        <button class="filter-tab active">All</button>
-        <button class="filter-tab">Web Development</button>
-        <button class="filter-tab">AI & Machine Learning</button>
-        <button class="filter-tab">Mobile Apps</button>
-        <button class="filter-tab">UI/UX Design</button>
-      </div>
-      <div class="search-box">
-        <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="11" cy="11" r="8"></circle>
-          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-        </svg>
-        <input type="text" class="search-input" placeholder="Search projects...">
-      </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section class="projects-section">
-      <!-- Featured Project -->
-      <div class="featured-project">
-        <div class="featured-project-image">
-          <img src="/api/placeholder/800/600" alt="AI Content Generator">
-        </div>
-        <div class="featured-project-content">
-          <span class="featured-label">Featured Project</span>
-          <h2 class="featured-project-title">AI Content Generator</h2>
-          <p class="featured-project-description">
-            An intelligent platform that leverages advanced machine learning algorithms to generate custom content for blogs, social media, and marketing campaigns. This application analyzes user inputs and preferences to create unique, engaging, and SEO-optimized content in seconds.
-          </p>
-          <div class="featured-project-tags">
-            <span class="featured-project-tag">Python</span>
-            <span class="featured-project-tag">FastAPI</span>
-            <span class="featured-project-tag">TensorFlow</span>
-            <span class="featured-project-tag">React</span>
-            <span class="featured-project-tag">NLP</span>
+      <div class="featured-container">
+        <div class="featured-left">
+          <div class="featured-image">
+            <img src="/api/placeholder/800/500" alt="AI-Powered Analytics Dashboard" />
           </div>
-          <a href="#" class="featured-project-link">
-            View Project Details
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </a>
+        </div>
+        <div class="featured-right">
+          <div class="featured-content">
+            <h3 class="featured-title">AI-Powered Analytics Dashboard</h3>
+            <p class="featured-description">
+              A comprehensive analytics platform that leverages artificial intelligence to transform raw data into actionable insights. This dashboard provides real-time monitoring, predictive analytics, and interactive data visualization for businesses of all sizes.
+            </p>
+            <div class="featured-tags">
+              <span class="featured-tag">React</span>
+              <span class="featured-tag">TensorFlow</span>
+              <span class="featured-tag">Python</span>
+              <span class="featured-tag">FastAPI</span>
+              <span class="featured-tag">AWS</span>
+            </div>
+            <div class="featured-buttons">
+              <a href="#" class="featured-button">
+                View Project
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M5 12H19M19 12L12 5M19 12L12 19"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </a>
+              <a href="#" class="featured-button">
+                View Code
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M8 3H7C5.89543 3 5 3.89543 5 5V19C5 20.1046 5.89543 21 7 21H17C18.1046 21 19 20.1046 19 19V13"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M19.5 6.5L12.5 13.5L11 15L12.5 16.5L14 15L21 8M19.5 6.5L22.5 3.5L20.5 1.5L17.5 4.5L19.5 6.5Z"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </a>
+            </div>
+          </div>
         </div>
       </div>
+    </section>
 
-      <!-- Projects Grid -->
+    <!-- Projects Grid Section -->
+    <section class="projects-grid-section">
+      <div class="section-header">
+        <span class="section-subtitle">Portfolio</span>
+        <h2 class="section-title">All <span>Projects</span></h2>
+      </div>
       <div class="projects-grid">
         <!-- Project 1 -->
         <div class="project-card">
           <div class="project-image">
-            <img src="/api/placeholder/600/400" alt="E-Commerce Dashboard">
+            <img src="/api/placeholder/600/400" alt="E-Commerce Dashboard" />
           </div>
           <div class="project-content">
             <h3 class="project-title">E-Commerce Dashboard</h3>
             <p class="project-description">
-              A responsive admin dashboard for managing online store operations. Features include inventory management, sales analytics, and customer insights.
+              A responsive admin dashboard for managing online store operations.
+              Features include inventory management, sales analytics, and
+              customer insights.
             </p>
             <div class="project-tags">
               <span class="project-tag">React</span>
               <span class="project-tag">Node.js</span>
               <span class="project-tag">MongoDB</span>
             </div>
-            <a href="#" class="project-link" data-project="ecommerce">
+            <a href="#" class="project-link">
               View Project
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M5 12H19M19 12L12 5M19 12L12 19"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
               </svg>
             </a>
           </div>
@@ -1178,22 +1034,34 @@
         <!-- Project 2 -->
         <div class="project-card">
           <div class="project-image">
-            <img src="/api/placeholder/600/400" alt="Smart Home Application">
+            <img src="/api/placeholder/600/400" alt="AI Content Generator" />
           </div>
           <div class="project-content">
-            <h3 class="project-title">Smart Home Application</h3>
+            <h3 class="project-title">AI Content Generator</h3>
             <p class="project-description">
-              A mobile application that allows users to control and automate their home devices from anywhere. Integrates with various IoT platforms.
+              An intelligent platform that uses machine learning to generate custom content for blogs, social media, and marketing campaigns based on user preferences and industry trends.
             </p>
             <div class="project-tags">
-              <span class="project-tag">React Native</span>
-              <span class="project-tag">Firebase</span>
-              <span class="project-tag">IoT</span>
+              <span class="project-tag">Python</span>
+              <span class="project-tag">FastAPI</span>
+              <span class="project-tag">TensorFlow</span>
             </div>
-            <a href="#" class="project-link" data-project="smarthome">
+            <a href="#" class="project-link">
               View Project
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M5 12H19M19 12L12 5M19 12L12 19"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
               </svg>
             </a>
           </div>
@@ -1202,23 +1070,36 @@
         <!-- Project 3 -->
         <div class="project-card">
           <div class="project-image">
-            <img src="/api/placeholder/600/400" alt="Financial Analytics Platform">
+            <img src="/api/placeholder/600/400" alt="Smart Home Application" />
           </div>
           <div class="project-content">
-            <h3 class="project-title">Financial Analytics Platform</h3>
+            <h3 class="project-title">Smart Home Application</h3>
             <p class="project-description">
-              A comprehensive analytics platform for financial data visualization and insights. Helps users track investments and make informed decisions.
+              A mobile application that allows users to control and automate
+              their home devices from anywhere. Integrates with various IoT
+              platforms for seamless connectivity.
             </p>
             <div class="project-tags">
-              <span class="project-tag">Vue.js</span>
-              <span class="project-tag">D3.js</span>
-              <span class="project-tag">Python</span>
-              <span class="project-tag">PostgreSQL</span>
+              <span class="project-tag">React Native</span>
+              <span class="project-tag">Firebase</span>
+              <span class="project-tag">IoT</span>
             </div>
-            <a href="#" class="project-link" data-project="finance">
+            <a href="#" class="project-link">
               View Project
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M5 12H19M19 12L12 5M19 12L12 19"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
               </svg>
             </a>
           </div>
@@ -1227,22 +1108,37 @@
         <!-- Project 4 -->
         <div class="project-card">
           <div class="project-image">
-            <img src="/api/placeholder/600/400" alt="Healthcare Mobile App">
+            <img src="/api/placeholder/600/400" alt="Blockchain Voting System" />
           </div>
           <div class="project-content">
-            <h3 class="project-title">Healthcare Mobile App</h3>
+            <h3 class="project-title">Blockchain Voting System</h3>
             <p class="project-description">
-              A mobile health application that helps users track their fitness goals, medication schedules, and connect with healthcare providers securely.
+              A secure and transparent voting platform built on blockchain technology. 
+              Ensures vote integrity and provides real-time results while maintaining
+              voter anonymity.
             </p>
             <div class="project-tags">
-              <span class="project-tag">Flutter</span>
-              <span class="project-tag">Firebase</span>
-              <span class="project-tag">ML Kit</span>
+              <span class="project-tag">Solidity</span>
+              <span class="project-tag">Ethereum</span>
+              <span class="project-tag">Web3.js</span>
+              <span class="project-tag">React</span>
             </div>
-            <a href="#" class="project-link" data-project="healthcare">
+            <a href="#" class="project-link">
               View Project
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M5 12H19M19 12L12 5M19 12L12 19"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
               </svg>
             </a>
           </div>
@@ -1251,23 +1147,37 @@
         <!-- Project 5 -->
         <div class="project-card">
           <div class="project-image">
-            <img src="/api/placeholder/600/400" alt="Educational Platform">
+            <img src="/api/placeholder/600/400" alt="NLP Sentiment Analyzer" />
           </div>
           <div class="project-content">
-            <h3 class="project-title">Educational Platform</h3>
+            <h3 class="project-title">NLP Sentiment Analyzer</h3>
             <p class="project-description">
-              An interactive learning platform with courses, quizzes, and progress tracking. Features include live sessions and personalized learning paths.
+              A natural language processing tool that analyzes text from social media, 
+              reviews, and customer feedback to determine sentiment and extract key insights
+              for businesses.
             </p>
             <div class="project-tags">
-              <span class="project-tag">Next.js</span>
-              <span class="project-tag">Node.js</span>
-              <span class="project-tag">MongoDB</span>
-              <span class="project-tag">WebRTC</span>
+              <span class="project-tag">Python</span>
+              <span class="project-tag">NLTK</span>
+              <span class="project-tag">spaCy</span>
+              <span class="project-tag">Flask</span>
             </div>
-            <a href="#" class="project-link" data-project="education">
+            <a href="#" class="project-link">
               View Project
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M5 12H19M19 12L12 5M19 12L12 19"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
               </svg>
             </a>
           </div>
@@ -1276,136 +1186,73 @@
         <!-- Project 6 -->
         <div class="project-card">
           <div class="project-image">
-            <img src="/api/placeholder/600/400" alt="Blockchain Wallet">
+            <img src="/api/placeholder/600/400" alt="AR Educational App" />
           </div>
           <div class="project-content">
-            <h3 class="project-title">Blockchain Wallet</h3>
+            <h3 class="project-title">AR Educational App</h3>
             <p class="project-description">
-              A secure digital wallet for cryptocurrency transactions. Features include multi-currency support, real-time price tracking, and enhanced security protocols.
+              An augmented reality application for educational purposes that brings
+              learning materials to life through interactive 3D models and immersive 
+              experiences for students.
             </p>
             <div class="project-tags">
-              <span class="project-tag">React</span>
-              <span class="project-tag">Web3.js</span>
-              <span class="project-tag">Solidity</span>
-              <span class="project-tag">Ethereum</span>
+              <span class="project-tag">Unity</span>
+              <span class="project-tag">ARKit</span>
+              <span class="project-tag">ARCore</span>
+              <span class="project-tag">C#</span>
             </div>
-            <a href="#" class="project-link" data-project="blockchain">
+            <a href="#" class="project-link">
               View Project
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M5 12H19M19 12L12 5M19 12L12 19"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
               </svg>
             </a>
           </div>
         </div>
       </div>
-
-      <!-- Pagination -->
-      <div class="pagination">
-        <div class="pagination-item active">1</div>
-        <div class="pagination-item">2</div>
-        <div class="pagination-item">3</div>
-        <div class="pagination-item">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </div>
-      </div>
     </section>
 
-    <!-- Project Details Modal -->
-    <div class="modal-bg">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h2 class="modal-title">Project Details</h2>
-          <button class="modal-close">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </button>
-        </div>
-        <div class="modal-body">
-          <div class="modal-image">
-            <img src="/api/placeholder/1000/600" alt="Project Image">
-          </div>
-          <div class="modal-info">
-            <div class="modal-description">
-              <p>
-                This is a detailed description of the project. It includes information about the project goals, challenges, and solutions implemented. The description should provide enough context for visitors to understand the scope and complexity of the work.
-              </p>
-              <p>
-                The project was developed using a combination of modern technologies and frameworks. The frontend was built with React.js, providing a responsive and interactive user interface. The backend utilizes Node.js and Express, with MongoDB as the database.
-              </p>
-              <p>
-                Key features of this project include:
-              </p>
-              <ul>
-                <li>User authentication and authorization</li>
-                <li>Real-time data processing and visualization</li>
-                <li>Integration with third-party APIs</li>
-                <li>Mobile-responsive design</li>
-                <li>Automated testing and continuous deployment</li>
-              </ul>
-              
-              <div class="modal-gallery">
-                <div class="gallery-item">
-                  <img src="/api/placeholder/600/400" alt="Gallery Image 1">
-                </div>
-                <div class="gallery-item">
-                  <img src="/api/placeholder/600/400" alt="Gallery Image 2">
-                </div>
-                <div class="gallery-item">
-                  <img src="/api/placeholder/600/400" alt="Gallery Image 3">
-                </div>
-                <div class="gallery-item">
-                  <img src="/api/placeholder/600/400" alt="Gallery Image 4">
-                </div>
-              </div>
-            </div>
-            <div class="modal-details">
-              <h4>Project Details</h4>
-              <div class="detail-item">
-                <span class="detail-label">Client</span>
-                <span class="detail-value">Personal Project</span>
-              </div>
-              <div class="detail-item">
-                <span class="detail-label">Date</span>
-                <span class="detail-value">January 2024</span>
-              </div>
-              <div class="detail-item">
-                <span class="detail-label">Category</span>
-                <span class="detail-value">Web Development</span>
-              </div>
-              <div class="detail-item">
-                <span class="detail-label">Role</span>
-                <span class="detail-value">Full Stack Developer</span>
-              </div>
-              
-              <h4>Technologies</h4>
-              <div class="modal-tags">
-                <span class="modal-tag">React</span>
-                <span class="modal-tag">Node.js</span>
-                <span class="modal-tag">MongoDB</span>
-                <span class="modal-tag">Express</span>
-                <span class="modal-tag">Redux</span>
-                <span class="modal-tag">SCSS</span>
-                <span class="modal-tag">Jest</span>
-              </div>
-              
-              <a href="#" class="modal-button">
-                Visit Live Site
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M18 13V19C18 19.5304 17.7893 20.0391 17.4142 20.4142C17.0391 20.7893 16.5304 21 16 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V8C3 7.46957 3.21071 6.96086 3.58579 6.58579C3.96086 6.21071 4.46957 6 5 6H11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                  <path d="M15 3H21V9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                  <path d="M10 14L21 3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top">
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M12 19V5M12 5L5 12M12 5L19 12"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+    </a>
 
     <script>
+      // Back to top functionality
+      document.querySelector('.back-to-top').addEventListener('click', function(e) {
+        e.preventDefault();
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      });
+
       // Navbar scroll effect
       window.addEventListener("scroll", function () {
         const navbar = document.querySelector(".navbar");
@@ -1421,126 +1268,94 @@
       const navLinks = document.querySelector(".nav-links");
 
       menuToggle.addEventListener("click", function () {
-        menuToggle.classList.toggle("active");
         navLinks.classList.toggle("active");
+        menuToggle.classList.toggle("active");
       });
 
-      // Filter functionality
-      const filterTabs = document.querySelectorAll(".filter-tab");
-      
-      filterTabs.forEach(tab => {
-        tab.addEventListener("click", function() {
-          // Remove active class from all tabs
-          filterTabs.forEach(t => t.classList.remove("active"));
-          
-          // Add active class to clicked tab
-          this.classList.add("active");
-          
-          // Here you would add actual filtering logic
-          const category = this.textContent;
-          console.log(`Filtering by: ${category}`);
-          
-          // For demo, just log the category
-          if (category === "All") {
-            // Show all projects
-          } else {
-            // Filter projects by category
-          }
-        });
-      });
-
-      // Search functionality
-      const searchInput = document.querySelector(".search-input");
-      
-      searchInput.addEventListener("input", function() {
-        const searchTerm = this.value.toLowerCase();
-        console.log(`Searching for: ${searchTerm}`);
+      // Typewriter Effect
+      function typeWriter() {
+        const typewriterElement = document.getElementById('typewriter');
+        const cursorElement = document.querySelector('.cursor');
+        const baseText = "My projects are more than just...";
+        const phrases = [
+          "code.",
+          "designs.",
+          "ideas.",
+          "solutions.",
+          "innovations.",
+          "passion projects."
+        ];
+        const typingSpeed = 70; // typing speed in milliseconds
+        const deletingSpeed = 30; // deleting speed in milliseconds
+        const pauseTime = 1500; // time to pause at the end of a phrase
         
-        // Here you would add actual search logic
-        // For example, loop through project titles and descriptions
-        // and hide/show based on matches
-      });
-
-      // Modal functionality
-      const projectLinks = document.querySelectorAll(".project-link, .featured-project-link");
-      const modalBg = document.querySelector(".modal-bg");
-      const modalClose = document.querySelector(".modal-close");
-      const modalTitle = document.querySelector(".modal-title");
-      
-      projectLinks.forEach(link => {
-        link.addEventListener("click", function(e) {
-          e.preventDefault();
+        let phraseIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        let isBaseTextTyped = false;
+        
+        // Start with empty text
+        typewriterElement.textContent = "";
+        cursorElement.style.display = "inline-block";
+        
+        function type() {
+          // Determine current phrase
+          const currentPhrase = phrases[phraseIndex];
           
-          // Get project ID from data attribute or use title
-          const projectId = this.getAttribute("data-project") || "";
-          const projectTitle = this.closest(".project-card")?.querySelector(".project-title")?.textContent || 
-                             this.closest(".featured-project")?.querySelector(".featured-project-title")?.textContent ||
-                             "Project Details";
+          // If base text hasn't been typed yet, type it first
+          if (!isBaseTextTyped) {
+            if (charIndex < baseText.length) {
+              typewriterElement.textContent = baseText.substring(0, charIndex + 1);
+              charIndex++;
+              setTimeout(type, typingSpeed);
+            } else {
+              isBaseTextTyped = true;
+              setTimeout(type, pauseTime);
+            }
+            return;
+          }
           
-          // Update modal content based on project
-          modalTitle.textContent = projectTitle;
-          
-          // Show modal with animation
-          modalBg.classList.add("active");
-          
-          // Prevent body scrolling
-          document.body.style.overflow = "hidden";
-        });
-      });
-      
-      // Close modal
-      modalClose.addEventListener("click", function() {
-        modalBg.classList.remove("active");
-        document.body.style.overflow = "auto";
-      });
-      
-      // Close modal when clicking outside content
-      modalBg.addEventListener("click", function(e) {
-        if (e.target === modalBg) {
-          modalBg.classList.remove("active");
-          document.body.style.overflow = "auto";
+          // Handle typing and deleting of phrases
+          if (!isDeleting && charIndex < currentPhrase.length) {
+            // Typing the current phrase
+            typewriterElement.textContent = baseText + currentPhrase.substring(0, charIndex + 1);
+            charIndex++;
+            setTimeout(type, typingSpeed);
+          } else if (isDeleting && charIndex > 0) {
+            // Deleting the current phrase
+            typewriterElement.textContent = baseText + currentPhrase.substring(0, charIndex - 1);
+            charIndex--;
+            setTimeout(type, deletingSpeed);
+          } else if (charIndex === currentPhrase.length && !isDeleting) {
+            // Finished typing the current phrase, pause before deleting
+            isDeleting = true;
+            setTimeout(type, pauseTime);
+          } else {
+            // Finished deleting the current phrase, move to the next one
+            isDeleting = false;
+            phraseIndex = (phraseIndex + 1) % phrases.length;
+            setTimeout(type, typingSpeed);
+          }
         }
-      });
+        
+        // Start the typewriter effect
+        setTimeout(type, 1000);
+      }
 
-      // Handle image gallery in modal
-      const galleryItems = document.querySelectorAll(".gallery-item");
-      const modalMainImage = document.querySelector(".modal-image img");
-      
-      galleryItems.forEach(item => {
-        item.addEventListener("click", function() {
-          const imgSrc = this.querySelector("img").getAttribute("src");
-          modalMainImage.setAttribute("src", imgSrc);
-          
-          // Smooth scroll to top of modal
-          document.querySelector(".modal-body").scrollTo({
-            top: 0,
-            behavior: "smooth"
+      // Handle Spline iframe loading and initialize typewriter
+      document.addEventListener("DOMContentLoaded", function () {
+        // Add a loading indicator for the Spline models if needed
+        const splineIframes = document.querySelectorAll(".intro-3d-iframe");
+        
+        splineIframes.forEach((iframe) => {
+          // You can add a loading state or animation while the 3D model loads
+          iframe.addEventListener("load", function () {
+            console.log("Spline 3D model loaded successfully");
           });
         });
-      });
-      
-      // Add smooth scrolling for scroll indicator
-      document.querySelector('.scroll-indicator').addEventListener('click', function() {
-        const filterSection = document.querySelector('.filter-section');
-        window.scrollTo({
-          top: filterSection.offsetTop,
-          behavior: 'smooth'
-        });
-      });
-
-      // Make scroll indicator interactive
-      const scrollIndicator = document.querySelector('.scroll-indicator');
-      scrollIndicator.style.cursor = 'pointer';
-      
-      // Hide scroll indicator when scrolled down
-      window.addEventListener('scroll', function() {
-        const introSection = document.querySelector('.intro-section');
-        if (window.scrollY > introSection.offsetHeight / 2) {
-          scrollIndicator.style.opacity = '0';
-          scrollIndicator.style.transition = 'opacity 0.5s ease';
-        } else {
-          scrollIndicator.style.opacity = '1';
-        }
+        
+        // Initialize typewriter effect
+        typeWriter();
       });
     </script>
   </body>

@@ -24,6 +24,10 @@ async def read_root(request: Request):
 async def read_root(request: Request):
     return templates.TemplateResponse("resume.html", {"request": request})
 
+@app.get("/projects", response_class=HTMLResponse)
+async def read_projects(request: Request):
+    return templates.TemplateResponse("project.html", {"request": request})
+
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run(app, host="0.0.0.0", port=8000)

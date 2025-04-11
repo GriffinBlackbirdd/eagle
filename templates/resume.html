@@ -562,6 +562,214 @@
           opacity: 1;
         }
       }
+      
+      /* Certifications Section */
+      .certifications {
+        padding-top: 5rem;
+        padding-bottom: 5rem;
+      }
+      
+      .certifications-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 4rem;
+      }
+      
+      .certification-card {
+        background: rgba(20, 20, 25, 0.4);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border-radius: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        overflow: hidden;
+        transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+      }
+      
+      .certification-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      
+      .certification-image {
+        width: 100%;
+        height: 200px;
+        overflow: hidden;
+      }
+      
+      .certification-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+      }
+      
+      .certification-card:hover .certification-image img {
+        transform: scale(1.05);
+      }
+      
+      .certification-content {
+        padding: 1.5rem;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+      }
+      
+      .certification-title {
+        font-size: 1.2rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        color: #fff;
+      }
+      
+      .certification-issuer {
+        font-size: 0.9rem;
+        color: rgba(255, 255, 255, 0.7);
+        margin-bottom: 1rem;
+      }
+      
+      .certification-date {
+        font-size: 0.8rem;
+        color: rgba(255, 255, 255, 0.6);
+        margin-bottom: 1rem;
+      }
+      
+      .certification-link {
+        margin-top: auto;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        color: #fff;
+        text-decoration: none;
+        font-size: 0.9rem;
+        transition: all 0.3s ease;
+      }
+      
+      .certification-link:hover {
+        color: rgba(255, 255, 255, 0.8);
+        transform: translateX(5px);
+      }
+      
+      @media (max-width: 992px) {
+        .certifications-grid {
+          grid-template-columns: repeat(2, 1fr);
+          padding: 0 3rem;
+        }
+      }
+      
+      @media (max-width: 768px) {
+        .certifications-grid {
+          grid-template-columns: 1fr;
+          padding: 0 2rem;
+        }
+      }
+      
+      @media (max-width: 480px) {
+        .certifications-grid {
+          padding: 0 1.5rem;
+        }
+      }
+      
+      /* Download Resume Button */
+      .download-resume-container {
+        display: flex;
+        justify-content: center;
+        margin-top: 5rem;
+        margin-bottom: 5rem;
+        padding: 0 4rem;
+      }
+      
+      .download-resume-button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        padding: 1.2rem 2.5rem;
+        background: rgba(255, 255, 255, 0.05);
+        color: #fff;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 30px;
+        font-size: 1.1rem;
+        font-weight: 600;
+        text-decoration: none;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        position: relative;
+        overflow: hidden;
+      }
+      
+      .download-resume-button::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          rgba(255, 255, 255, 0.1),
+          rgba(255, 255, 255, 0)
+        );
+        z-index: 1;
+        transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+      }
+      
+      .download-resume-button:hover {
+        transform: translateY(-5px);
+        background: rgba(255, 255, 255, 0.1);
+        border-color: rgba(255, 255, 255, 0.3);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+      }
+      
+      .download-resume-button:hover::before {
+        left: 100%;
+      }
+      
+      .download-resume-button svg {
+        width: 24px;
+        height: 24px;
+        position: relative;
+        z-index: 2;
+        transition: transform 0.3s ease;
+      }
+      
+      .download-resume-button:hover svg {
+        transform: translateY(3px);
+      }
+      
+      .download-resume-button span {
+        position: relative;
+        z-index: 2;
+      }
+      
+      @media (max-width: 768px) {
+        .download-resume-container {
+          padding: 0 2rem;
+        }
+        
+        .download-resume-button {
+          padding: 1rem 2rem;
+          font-size: 1rem;
+        }
+      }
+      
+      @media (max-width: 480px) {
+        .download-resume-container {
+          padding: 0 1.5rem;
+        }
+        
+        .download-resume-button {
+          width: 100%;
+          padding: 1rem 1.5rem;
+        }
+      }
     </style>
     <script>
       document.addEventListener("DOMContentLoaded", function () {
@@ -674,7 +882,7 @@
                   <h3>Freelance Developer</h3>
                   <h4>Minato Enterprises</h4>
                   <p>
-                    Designed and implemented a self-reliant inventory management system featuring real-time tracking, automated billing, and intelligent stock control. Developed low-latency RESTful APIs using FastAPI to ensure efficient request handling and seamless system integration. Leveraged Phidata’s agentic workflow to build an AI-powered decision-making engine for inventory oversight and automated purchase order generation. The solution was scalable and self-sufficient, significantly reducing manual intervention, minimizing errors, and enhancing overall business efficiency.
+                    Designed and implemented a self-reliant inventory management system featuring real-time tracking, automated billing, and intelligent stock control. Developed low-latency RESTful APIs using FastAPI to ensure efficient request handling and seamless system integration. Leveraged Phidata's agentic workflow to build an AI-powered decision-making engine for inventory oversight and automated purchase order generation. The solution was scalable and self-sufficient, significantly reducing manual intervention, minimizing errors, and enhancing overall business efficiency.
                   </p>
                   <div class="timeline-tags">
                     <span class="timeline-tag">GenAI</span>
@@ -949,6 +1157,47 @@
   </style>
 </section>
 
+<!-- Certifications Section -->
+<section id="certifications" class="certifications experience">
+  <div class="experience-header">
+    <span class="experience-subtitle">Professional Development</span>
+    <h2 class="section-title">My <span>Certifications</span></h2>
+  </div>
+  
+  <div class="certifications-grid">
+    <!-- Certification 1 -->
+    <div class="certification-card">
+      <div class="certification-image">
+        <img src="/Users/eagle/Developer/portfolio/certificate.png" alt="CS50" />
+      </div>
+      <div class="certification-content">
+        <h3 class="certification-title">EDX CS50</h3>
+        <p class="certification-issuer">EDX</p>
+        <p class="certification-date">March 2023</p>
+        <!-- <a href="#" class="certification-link">
+          View Certificate
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a> -->
+      </div>
+    </div>
+  </div>
+<!-- </section> -->
+
+<!-- Download Resume Button -->
+<div class="download-resume-container">
+  <a href="https://example.com/arreyan-hamid-resume.pdf" class="download-resume-button" download>
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M21 15V19C21 19.5304 20.7893 20.0391 20.4142 20.4142C20.0391 20.7893 19.5304 21 19 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V15" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M7 10L12 15L17 10" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M12 15V3" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <span>Download Full Resume</span>
+  </a>
+</div>
+</section>
+
     <script>
       // Navbar scroll effect
       window.addEventListener("scroll", function () {
@@ -982,5 +1231,3 @@
         });
       });
     </script>
-  </body>
-</html>
