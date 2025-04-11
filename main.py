@@ -11,7 +11,7 @@ templates_dir = "templates"
 os.makedirs(templates_dir, exist_ok=True)
 
 # Mount static files directory
-app.mount("/static", StaticFiles(directory="static"), name="static")
+# app.mount("/static", StaticFiles(directory="static"), name="static")
 
 # Set up Jinja2 templates
 templates = Jinja2Templates(directory=templates_dir)
