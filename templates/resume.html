@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Arreyan Hamid | Resume</title>
+    <style>
+      /* Reset and Base Styles */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Inter", sans-serif;
+      }
+
+      body {
+        background-color: #000;
+        color: #fff;
+        overflow-x: hidden;
+      }
+
+      /* Typography */
+      @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap");
+
+      /* Navbar Styles */
+      .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 2rem 4rem;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 100;
+        transition: all 0.3s ease;
+      }
+
+      .navbar.scrolled {
+        background-color: rgba(0, 0, 0, 0.9);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        padding: 1rem 4rem;
+      }
+
+      @media (max-width: 768px) {
+        .navbar {
+          padding: 1.5rem 2rem;
+        }
+
+        .navbar.scrolled {
+          padding: 1rem 2rem;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .navbar {
+          padding: 1rem 1.5rem;
+        }
+      }
+
+      .logo {
+        font-size: 1.8rem;
+        font-weight: 700;
+        letter-spacing: 2px;
+      }
+
+      .logo span {
+        color: #888;
+        animation: pulse 2s infinite;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 2.5rem;
+      }
+
+      .nav-links a {
+        color: #fff;
+        text-decoration: none;
+        font-size: 1rem;
+        font-weight: 400;
+        position: relative;
+        transition: color 0.3s ease;
+      }
+
+      .nav-links a:hover {
+        color: #888;
+      }
+
+      .nav-links a::after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: -5px;
+        left: 0;
+        background-color: #fff;
+        transition: width 0.3s ease;
+      }
+
+      .nav-links a:hover::after {
+        width: 100%;
+      }
+
+      .menu-toggle {
+        display: none;
+        cursor: pointer;
+      }
+
+      .menu-toggle .bar {
+        width: 25px;
+        height: 2px;
+        background-color: #fff;
+        margin: 5px 0;
+        transition: 0.4s;
+      }
+
+      /* Mobile Navigation */
+      @media (max-width: 768px) {
+        .nav-links {
+          position: fixed;
+          top: 0;
+          right: -100%;
+          width: 70%;
+          height: 100vh;
+          background-color: rgba(0, 0, 0, 0.95);
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          gap: 2rem;
+          transition: right 0.5s ease;
+          z-index: 99;
+          padding: 2rem;
+          box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .nav-links.active {
+          right: 0;
+        }
+
+        .menu-toggle {
+          display: block;
+          z-index: 100;
+        }
+
+        .menu-toggle.active .bar:nth-child(1) {
+          transform: rotate(-45deg) translate(-5px, 6px);
+        }
+
+        .menu-toggle.active .bar:nth-child(2) {
+          opacity: 0;
+        }
+
+        .menu-toggle.active .bar:nth-child(3) {
+          transform: rotate(45deg) translate(-5px, -6px);
+        }
+      }
+
+      /* Experience Section */
+      .experience {
+        min-height: 100vh;
+        padding: 8rem 4rem;
+        position: relative;
+        background: linear-gradient(
+          0deg,
+          rgba(0, 0, 0, 1) 0%,
+          rgba(10, 10, 15, 1) 100%
+        );
+      }
+
+      .experience-header {
+        text-align: center;
+        margin-bottom: 4rem;
+      }
+
+      .experience-subtitle {
+        display: inline-block;
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        color: rgba(255, 255, 255, 0.6);
+        margin-bottom: 1rem;
+        position: relative;
+        padding: 0 10px;
+      }
+
+      .experience-subtitle::before,
+      .experience-subtitle::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        width: 25px;
+        height: 1px;
+        background-color: rgba(255, 255, 255, 0.3);
+      }
+
+      .experience-subtitle::before {
+        left: -30px;
+      }
+
+      .experience-subtitle::after {
+        right: -30px;
+      }
+      
+      .section-title {
+        font-size: 2.8rem;
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+        position: relative;
+        padding-bottom: 1rem;
+      }
+
+      .section-title::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 60px;
+        height: 3px;
+        background-color: #888;
+      }
+
+      .section-title span {
+        color: #888;
+      }
+
+      /* Experience Container with Left and Right Sections */
+      .experience-container {
+        display: flex;
+        max-width: 1400px;
+        margin: 0 auto;
+      }
+
+      .experience-left {
+        width: 60%;
+        padding-right: 3rem;
+      }
+
+      .experience-right {
+        width: 40%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        position: relative;
+      }
+
+      /* Timeline Container */
+      .timeline-container {
+        width: 100%;
+        padding-right: 1rem;
+      }
+
+      .timeline {
+        position: relative;
+        padding: 2rem 0;
+      }
+
+      /* Timeline Line */
+      .timeline::before {
+        content: "";
+        position: absolute;
+        width: 2px;
+        background: linear-gradient(
+          to bottom,
+          rgba(255, 255, 255, 0.05),
+          rgba(255, 255, 255, 0.2),
+          rgba(255, 255, 255, 0.2),
+          rgba(255, 255, 255, 0.05)
+        );
+        top: 0;
+        bottom: 0;
+        left: 40px;
+        border-radius: 1px;
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+      }
+
+      /* Timeline Items */
+      .timeline-item {
+        position: relative;
+        margin-bottom: 4rem;
+        width: 100%;
+      }
+
+      /* Timeline Dot */
+      .timeline-dot {
+        position: absolute;
+        width: 16px;
+        height: 16px;
+        left: 40px;
+        top: 30px;
+        margin-left: -8px;
+        background: rgba(255, 255, 255, 0.8);
+        border-radius: 50%;
+        box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.1),
+          0 0 10px rgba(255, 255, 255, 0.2);
+        z-index: 1;
+        transition: all 0.3s ease;
+      }
+
+      .timeline-item:hover .timeline-dot {
+        background: #fff;
+        transform: scale(1.2);
+        box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.2),
+          0 0 15px rgba(255, 255, 255, 0.3);
+      }
+
+      /* Timeline Date */
+      .timeline-date {
+        position: absolute;
+        width: 110px;
+        text-align: right;
+        top: 28px;
+        left: 60px;
+        margin-left: -22vh; /* Add margin for spacing */
+        font-size: 0.95rem;
+        font-weight: 600;
+        color: rgba(255, 255, 255, 0.8);
+        letter-spacing: 1px;
+        transition: all 0.3s ease;
+      }
+
+      .timeline-item:hover .timeline-date {
+        color: #fff;
+        transform: translateX(-5px);
+      }
+
+      /* Timeline Content */
+      .timeline-content {
+        position: relative;
+        width: calc(100% - 90px);
+        margin-left: 70px;
+        background: rgba(20, 20, 25, 0.4);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border-radius: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        padding: 2rem;
+        transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+        transform-style: preserve-3d;
+      }
+
+      .timeline-content::before {
+        content: "";
+        position: absolute;
+        top: 30px;
+        left: -10px;
+        width: 20px;
+        height: 20px;
+        background: inherit;
+        border-left: 1px solid rgba(255, 255, 255, 0.05);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        transform: rotate(45deg);
+      }
+
+      /* Timeline Content Styles */
+      .timeline-content h3 {
+        font-size: 1.4rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        color: #fff;
+      }
+
+      .timeline-content h4 {
+        font-size: 1rem;
+        font-weight: 500;
+        margin-bottom: 1rem;
+        color: rgba(255, 255, 255, 0.7);
+      }
+
+      .timeline-content p {
+        font-size: 0.95rem;
+        font-weight: 300;
+        line-height: 1.7;
+        color: rgba(255, 255, 255, 0.7);
+        margin-bottom: 1.5rem;
+      }
+
+      /* Hover Effects */
+      .timeline-item:hover .timeline-content {
+        transform: translateY(-5px) scale(1.02);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        background: rgba(25, 25, 30, 0.5);
+      }
+
+      /* Timeline Tags */
+      .timeline-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.6rem;
+      }
+
+      .timeline-tag {
+        font-size: 0.75rem;
+        background: rgba(255, 255, 255, 0.05);
+        padding: 0.4rem 0.8rem;
+        border-radius: 20px;
+        color: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        transition: all 0.3s ease;
+      }
+
+      .timeline-item:hover .timeline-tag {
+        background: rgba(255, 255, 255, 0.1);
+      }
+
+      /* 3D Design Container for Right Side */
+      .experience-right .spline-container {
+        width: 100%;
+        height: 600px;
+        margin-bottom: 1.5rem;
+        position: sticky;
+        top: 100px;
+      }
+      
+      /* Larger spline container for skills section */
+      .experience-left .spline-container {
+        width: 100%;
+        height: 800px;
+        margin-bottom: 1.5rem;
+        position: relative;
+      }
+      
+      .experience-left .spline-iframe {
+        width: 100%;
+        height: 100%;
+        border-radius: 0px;
+        overflow: hidden;
+        box-shadow: none;
+        border: none;
+      }
+
+      .experience-right .spline-iframe {
+        width: 100%;
+        height: 100%;
+        margin-left: 50px;
+        border-radius: 0px;
+        overflow: hidden;
+        box-shadow: none;
+        border: none;
+      }
+
+      .experience-3d-caption {
+        text-align: center;
+        font-size: 0.95rem;
+        color: rgba(255, 255, 255, 0.7);
+        margin-top: 1rem;
+        font-style: italic;
+        padding: 0 1rem;
+      }
+
+      /* Experience Section Responsive */
+      @media (max-width: 992px) {
+        .experience {
+          padding: 6rem 3rem;
+        }
+
+        .timeline-content h3 {
+          font-size: 1.3rem;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .experience {
+          padding: 5rem 2rem;
+        }
+
+        .experience-container {
+          flex-direction: column;
+        }
+
+        .experience-left {
+          width: 100%;
+          padding-right: 0;
+          margin-bottom: 3rem;
+        }
+
+        .experience-right {
+          width: 100%;
+          height: 400px;
+        }
+
+        .experience-right .spline-iframe {
+          margin-left: 0;
+        }
+
+        .timeline-date {
+          position: relative;
+          width: auto;
+          text-align: left;
+          top: 0;
+          left: 0;
+          margin-left: 70px;
+          margin-bottom: 0.5rem;
+          font-size: 0.85rem;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .experience {
+          padding: 4rem 1.5rem;
+        }
+
+        .timeline::before {
+          left: 20px;
+        }
+
+        .timeline-dot {
+          left: 20px;
+        }
+
+        .timeline-content {
+          width: calc(100% - 50px);
+          margin-left: 40px;
+          padding: 1.5rem;
+        }
+
+        .timeline-content h3 {
+          font-size: 1.2rem;
+        }
+
+        .timeline-content h4 {
+          font-size: 0.9rem;
+        }
+
+        .experience-right {
+          height: 300px;
+        }
+      }
+
+      /* Animations */
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      @keyframes slideUp {
+        from {
+          transform: translateY(30px);
+          opacity: 0;
+        }
+        to {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+
+      @keyframes pulse {
+        0% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.5;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+    </style>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Mobile menu toggle functionality
+        const menuToggle = document.querySelector(".menu-toggle");
+        const navLinks = document.querySelector(".nav-links");
+
+        menuToggle.addEventListener("click", function () {
+          menuToggle.classList.toggle("active");
+          navLinks.classList.toggle("active");
+        });
+
+        // Close mobile menu when a link is clicked
+        const navItems = document.querySelectorAll(".nav-links a");
+        navItems.forEach((item) => {
+          item.addEventListener("click", function () {
+            menuToggle.classList.remove("active");
+            navLinks.classList.remove("active");
+          });
+        });
+
+        // Navbar scroll effect
+        window.addEventListener("scroll", function () {
+          const navbar = document.querySelector(".navbar");
+          if (window.scrollY > 50) {
+            navbar.classList.add("scrolled");
+          } else {
+            navbar.classList.remove("scrolled");
+          }
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar">
+      <div class="logo">ARREYAN<span>.</span></div>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="index.html#about">About</a>
+        <a href="index.html#projects">Projects</a>
+        <a href="resume.html" class="active">Resume</a>
+        <a href="#">Contact</a>
+      </div>
+      <div class="menu-toggle">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+      </div>
+    </nav>
+
+    <!-- Experience Section -->
+    <section id="experience" class="experience">
+      <div class="experience-header">
+        <span class="experience-subtitle">Career Path</span>
+        <h2 class="section-title">My <span>Experience</span></h2>
+      </div>
+      <div class="experience-container">
+        <div class="experience-left">
+          <div class="timeline-container">
+            <div class="timeline">
+              <!-- Experience Item 1 -->
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                  <div class="timeline-date">Present</div>
+                  <h3>Freelance Generative AI Developer</h3>
+                  <h4>CIFC</h4>
+                  <p>
+                    Led the development of an AI-powered system designed to automatically fetch and analyze the latest news and data from various online sources, focusing on geopolitics, international trade deals, and mineral discoveries. Leveraged natural language processing and machine learning techniques to generate actionable insights, enabling faster and more informed decision-making. The project was strategically aimed at boosting productivity by approximately 30% through real-time intelligence and automated analysis. 
+                  </p>
+                  <div class="timeline-tags">
+                    <span class="timeline-tag">Agno</span>
+                    <span class="timeline-tag">FastAPI</span>
+                    <span class="timeline-tag">Supabase</span>
+                    <span class="timeline-tag">Docker</span>
+                    <span class="timeline-tag">LLMOPS</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Experience Item 2 -->
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                  <div class="timeline-date">June - Aug (2024)</div>
+                  <h3>Data Engineer & AI Intern</h3>
+                  <h4>Futurense Technologies</h4>
+                  <p>
+                    Developed an end-to-end real-time data pipeline using Azure and Apache Airflow to enable efficient data ingestion, transformation, and storage from CRMs and other enterprise sources. Ensured seamless data extraction and integration while maintaining data integrity across the pipeline. Additionally, built an agentic workflow leveraging CrewAI and Generative AI to generate personalized, insight-rich reports for the CEO/MD, empowering strategic decision-making through data-driven intelligence.
+                  </p>
+                  <div class="timeline-tags">
+                    <span class="timeline-tag">Azure</span>
+                    <span class="timeline-tag">Apache</span>
+                    <span class="timeline-tag">FastAPI</span>
+                    <span class="timeline-tag">PyQT5</span>
+                    <span class="timeline-tag">EDA</span>
+                    <span class="timeline-tag">GenAI</span>
+
+
+                  </div>
+                </div>
+              </div>
+
+              <!-- Experience Item 3 -->
+              <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                  <div class="timeline-date">Oct - Nov (2024)</div>
+                  <h3>Freelance Developer</h3>
+                  <h4>Minato Enterprises</h4>
+                  <p>
+                    Designed and implemented a self-reliant inventory management system featuring real-time tracking, automated billing, and intelligent stock control. Developed low-latency RESTful APIs using FastAPI to ensure efficient request handling and seamless system integration. Leveraged Phidata’s agentic workflow to build an AI-powered decision-making engine for inventory oversight and automated purchase order generation. The solution was scalable and self-sufficient, significantly reducing manual intervention, minimizing errors, and enhancing overall business efficiency.
+                  </p>
+                  <div class="timeline-tags">
+                    <span class="timeline-tag">GenAI</span>
+                    <span class="timeline-tag">FastAPI</span>
+                    <span class="timeline-tag">Sqlit3</span>
+                    <span class="timeline-tag">LangGraph</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="experience-right">
+          <div class="spline-container">
+            <iframe
+              class="spline-iframe"
+              src="https://my.spline.design/droid-b76orvqB65OgP6By4zh4azOP/"
+              frameborder="0"
+              allowfullscreen
+            ></iframe>
+          </div>
+          <div class="experience-3d-caption">
+            <p>
+              My journey from coding basics to creating complex full-stack
+              solutions
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+<section id="skills" class="skills experience">
+  <div class="experience-header">
+    <span class="experience-subtitle">Technical Expertise</span>
+    <h2 class="section-title">My <span>Skills</span></h2>
+  </div>
+  <div class="experience-container">
+    <div class="experience-left">
+      <div class="spline-container">
+        <iframe
+          class="spline-iframe"
+          src="https://my.spline.design/badges-7fJHcJ2d4vwQKU63YYiWwMnu/"
+          frameborder="0"
+          allowfullscreen
+        ></iframe>
+      </div>
+      <div class="experience-3d-caption">
+        <p>
+          Visualizing my technical skills and expertise
+        </p>
+      </div>
+    </div>
+    <div class="experience-right skills-wrapper">
+      <div class="skills-container">
+        <div class="skills-group">
+          <h3>Languages</h3>
+          <div class="timeline-tags">
+            <span class="timeline-tag">Python</span>
+            <span class="timeline-tag">JavaScript</span>
+            <span class="timeline-tag">TypeScript</span>
+            <span class="timeline-tag">Java</span>
+          </div>
+        </div>
+        
+        <div class="skills-group">
+          <h3>Frameworks</h3>
+          <div class="timeline-tags">
+            <span class="timeline-tag">FastAPI</span>
+            <span class="timeline-tag">Django</span>
+            <span class="timeline-tag">CrewAI</span>
+            <span class="timeline-tag">Phidata</span>
+            <span class="timeline-tag">GitHub</span>
+            <span class="timeline-tag">Ubuntu</span>
+            <span class="timeline-tag">Azure</span>
+          </div>
+        </div>
+        
+        <div class="skills-group">
+          <h3>Expertise</h3>
+          <div class="timeline-tags">
+            <span class="timeline-tag">Data Structures and Algorithms</span>
+            <span class="timeline-tag">Problem-Solving</span>
+            <span class="timeline-tag">Responsive Web Design</span>
+            <span class="timeline-tag">Generative-AI</span>
+            <span class="timeline-tag">Data Engineering</span>
+            <span class="timeline-tag">Data Analysis with AI</span>
+            <span class="timeline-tag">DeepLearning</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    .skills-wrapper {
+      width: 60% !important; 
+      padding-left: 3rem;
+    }
+    
+    .skills-container {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      width: 100%;
+    }
+    
+    .skills-group {
+      background: rgba(20, 20, 25, 0.4);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      padding: 2rem;
+      transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+    }
+    
+    .skills-group:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: rgba(25, 25, 30, 0.5);
+    }
+    
+    .skills-group h3 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      color: #fff;
+      position: relative;
+      padding-bottom: 0.5rem;
+    }
+    
+    .skills-group h3::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 40px;
+      height: 2px;
+      background-color: #888;
+    }
+    
+    @media (max-width: 768px) {
+      .skills-wrapper {
+        width: 100% !important;
+        padding-left: 0;
+      }
+      
+      .skills-container {
+        padding: 0 1rem;
+      }
+      
+      .experience-left .spline-container {
+        height: 500px;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .experience-left .spline-container {
+        height: 400px;
+      }
+    }
+  </style>
+</section>
+
+<!-- Education Section -->
+<section id="education" class="education experience">
+  <div class="experience-header">
+    <span class="experience-subtitle">Academic Background</span>
+    <h2 class="section-title">My <span>Education</span></h2>
+  </div>
+  <div class="experience-container">
+    <div class="experience-left education-left">
+      <div class="timeline-container">
+        <div class="timeline">
+          <!-- Education Item 1 -->
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <div class="timeline-date">2022 - 2026</div>
+              <h3>Lovely Professional University, Punjab</h3>
+              <h4>Computer Science and Engineering</h4>
+              <p>
+                Pursuing a degree in Computer Science and Engineering with a strong focus on AI and data engineering.
+                <br>
+                <strong>CGPA:</strong> 6
+              </p>
+              <div class="timeline-tags">
+                <span class="timeline-tag">Jalandhar, Punjab</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Education Item 2 -->
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <div class="timeline-date">2020 - 2021</div>
+              <h3>Delhi Public School, Vasant Kunj</h3>
+              <h4>Senior Secondary Education</h4>
+              <p>
+                Completed senior secondary education with a focus on science and mathematics.
+                <br>
+                <strong>Percentage:</strong> 88%
+              </p>
+              <div class="timeline-tags">
+                <span class="timeline-tag">Delhi</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Education Item 3 -->
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <div class="timeline-date">2018 - 2019</div>
+              <h3>Delhi Public School, Sushant Lok</h3>
+              <h4>Secondary Education</h4>
+              <p>
+                Completed secondary education with excellent academic performance.
+                <br>
+                <strong>Percentage:</strong> 94%
+              </p>
+              <div class="timeline-tags">
+                <span class="timeline-tag">Delhi</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="experience-right">
+      <div class="spline-container">
+        <iframe
+          class="spline-iframe"
+          src="https://my.spline.design/earthdayandnight-lsYsGDVD8UfndK2WyIqQ0otV/"
+          frameborder="0"
+          allowfullscreen
+        ></iframe>
+      </div>
+      <div class="experience-3d-caption">
+        <p>
+          My educational journey and academic achievements
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    .education {
+      padding-top: 5rem;
+      padding-bottom: 5rem;
+    }
+    
+    .education-left {
+      width: 60% !important;
+    }
+    
+    @media (max-width: 768px) {
+      .education {
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+      }
+      
+      .education-left {
+        width: 100% !important;
+        margin-bottom: 3rem;
+      }
+    }
+  </style>
+</section>
+
+    <script>
+      // Navbar scroll effect
+      window.addEventListener("scroll", function () {
+        const navbar = document.querySelector(".navbar");
+        if (window.scrollY > 50) {
+          navbar.classList.add("scrolled");
+        } else {
+          navbar.classList.remove("scrolled");
+        }
+      });
+
+      // Mobile menu toggle
+      const menuToggle = document.querySelector(".menu-toggle");
+      const navLinks = document.querySelector(".nav-links");
+
+      menuToggle.addEventListener("click", function () {
+        navLinks.classList.toggle("active");
+        menuToggle.classList.toggle("active");
+      });
+
+      // Handle Spline iframe loading
+      document.addEventListener("DOMContentLoaded", function () {
+        // Add a loading indicator for the Spline models if needed
+        const splineIframes = document.querySelectorAll(".spline-iframe");
+        
+        splineIframes.forEach((iframe) => {
+          // You can add a loading state or animation while the 3D model loads
+          iframe.addEventListener("load", function () {
+            console.log("Spline 3D model loaded successfully");
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
