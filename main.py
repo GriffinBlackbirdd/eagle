@@ -9,9 +9,14 @@ app = FastAPI()
 # Create templates directory if it doesn't exist
 templates_dir = "templates"
 os.makedirs(templates_dir, exist_ok=True)
+static_dir = "static"
+video_dir = os.path.join(static_dir, "video")
 
+os.makedirs(templates_dir, exist_ok=True)
+os.makedirs(static_dir, exist_ok=True)
+os.makedirs(video_dir, exist_ok=True)
 # Mount static files directory
-# app.mount("/static", StaticFiles(directory="static"), name="static")
+app.mount("/static", StaticFiles(directory="static"), name="static")
 
 # Set up Jinja2 templates
 templates = Jinja2Templates(directory=templates_dir)
